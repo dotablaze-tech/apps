@@ -46,7 +46,7 @@ Runs PostgreSQL in a disposable Docker container on port `5432`.
 nx run meowbotdb:serve-cache
 ```
 
-Creates and mounts a Docker volume (`meowbotdb-data`) for persistent local storage.
+Creates and mounts a Docker volume (`meowbotdb-data`) at `/var/lib/postgresql` for persistent local storage. PostgreSQL 18 keeps its data in a version-specific subdirectory there, so a volume created by an older image must be removed with `clear-cache` first.
 
 ### Clear Persistent Volume
 
