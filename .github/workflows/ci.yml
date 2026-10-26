@@ -15,9 +15,6 @@ concurrency:
   # image push, leaving a release with no image.
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
-env:
-  NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
-
 jobs:
   check:
     # GitHub-hosted only: the self-hosted ARC runner set is dormant.
@@ -40,7 +37,7 @@ jobs:
         name: Setup Main Branch Tracking
         run: git branch --track main origin/main
       - name: Run Format Check
-        run: npx nx-cloud record -- nx format:check
+        run: npx nx format:check
       - name: Reset NX
         run: npx nx reset
       - name: Run Linting, Unit, Component, & E2E Tests

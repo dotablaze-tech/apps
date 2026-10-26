@@ -14,7 +14,6 @@
       "{workspaceRoot}/go.work.sum"
     ]
   },
-  "nxCloudId": "67fc756a79bca31eee133412",
   "plugins": [
     {
       "plugin": "@nx/js/typescript",
