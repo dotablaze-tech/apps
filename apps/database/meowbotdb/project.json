@@ -41,7 +41,7 @@
       "command": "docker run --rm -e POSTGRES_PASSWORD=default_password -p 5432:5432 dotablaze/meowbotdb:latest"
     },
     "serve-cache": {
-      "command": "docker run --rm -e POSTGRES_PASSWORD=default_password -v meowbotdb-data:/var/lib/postgresql/data -p 5432:5432 dotablaze/meowbotdb:latest"
+      "command": "docker run --rm -e POSTGRES_PASSWORD=default_password -v meowbotdb-data:/var/lib/postgresql -p 5432:5432 dotablaze/meowbotdb:latest"
     },
     "clear-cache": {
       "command": "docker volume rm meowbotdb-data || true"
