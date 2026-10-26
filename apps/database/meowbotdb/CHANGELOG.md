@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.4](https://github.com/dotablaze-tech/apps/compare/meowbotdb-1.0.3...meowbotdb-1.0.4) (2026-10-26)
+
+### Bug Fixes
+
+* **deps:** update postgres docker tag to v18 ([1602082](https://github.com/dotablaze-tech/apps/commit/16020824dfe38013e8e8768cad65517539ba5209))
+* **meowbotdb:** mount serve-cache volume at /var/lib/postgresql ([4b4adde](https://github.com/dotablaze-tech/apps/commit/4b4adde79e8baa07710357d74fc3d8f56233c880))
+
 ## [1.0.3](https://github.com/dotablaze-tech/apps/compare/meowbotdb-1.0.2...meowbotdb-1.0.3) (2026-10-24)
 
 ### Bug Fixes
