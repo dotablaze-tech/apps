@@ -2,6 +2,12 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.5](https://github.com/dotablaze-tech/apps/compare/meowbotdb-1.0.4...meowbotdb-1.0.5) (2026-10-31)
+
+### Bug Fixes
+
+* **deps:** update postgres:18.6 docker digest to 979bccf ([f154764](https://github.com/dotablaze-tech/apps/commit/f1547649e3e69fbe19d02b5629c4d079f97d9b05))
+
 ## [1.0.4](https://github.com/dotablaze-tech/apps/compare/meowbotdb-1.0.3...meowbotdb-1.0.4) (2026-10-26)
 
 ### Bug Fixes
