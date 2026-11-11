@@ -2,6 +2,17 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.10](https://github.com/dotablaze-tech/apps/compare/meowbot-1.0.9...meowbot-1.0.10) (2026-11-11)
+
+### Dependency Updates
+
+* `go-meowbot-feature-api` updated to version `1.0.1`
+* `go-meowbot-feature-handler` updated to version `1.0.1`
+
+### Bug Fixes
+
+* **deps:** update module golang.org/x/crypto to v0.59.0 [security] ([a02ac9d](https://github.com/dotablaze-tech/apps/commit/a02ac9d8ddbbc2096713532d15b690ae1b3f1669))
+
 ## [1.0.9](https://github.com/dotablaze-tech/apps/compare/meowbot-1.0.8...meowbot-1.0.9) (2026-10-24)
 
 ### Bug Fixes
