@@ -10,7 +10,7 @@
     "@commitlint/cli": "^21.2.4",
     "@commitlint/config-conventional": "^21.2.4",
     "@jscutlery/semver": "^7.1.0",
-    "@nx-go/nx-go": "^4.1.1",
+    "@nx-go/nx-go": "^24.0.0",
     "@nx/js": "24.0.6",
     "@swc-node/register": "1.12.1",
     "@swc/core": "1.16.22",
