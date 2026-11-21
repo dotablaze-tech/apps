@@ -1,4 +1,4 @@
-FROM postgres:18.7@sha256:eb63372c1e05c755f55fa30cbd07aecc443676fc6c0fa90b9002d01537841e1a
+FROM postgres:19.0@sha256:bb6e70add742cd868fb62cb3b2f67d1dd2bdd2b65a521e778420748753687c60
 
 # POSTGRES_PASSWORD is deliberately not baked in: supply it at run time.
 ENV POSTGRES_USER=default_user
