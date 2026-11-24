@@ -1,0 +1,96 @@
+{
+  "name": "clipbot",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/go/clipbot",
+  "tags": ["type:app", "language:go", "scope:clipbot"],
+  "targets": {
+    "build": {
+      "executor": "@nx-go/nx-go:build",
+      "options": {
+        "main": "{projectRoot}",
+        "outputPath": "../../../dist/apps/go/clipbot/main"
+      },
+      "cache": true,
+      "inputs": ["golang"],
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}*"]
+    },
+    "serve": {
+      "executor": "@nx-go/nx-go:serve",
+      "options": {
+        "main": "{projectRoot}"
+      },
+      "inputs": ["golang"],
+      "continuous": true
+    },
+    "test": {
+      "executor": "@nx-go/nx-go:test",
+      "cache": true,
+      "inputs": ["golang"]
+    },
+    "lint": {
+      "executor": "@nx-go/nx-go:lint",
+      "cache": true,
+      "inputs": ["golang"]
+    },
+    "tidy": {
+      "executor": "@nx-go/nx-go:tidy",
+      "cache": true,
+      "inputs": ["golang"],
+      "outputs": ["{projectRoot}/go.mod", "{projectRoot}/go.sum"]
+    },
+    "build-image": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "docker buildx build --platform linux/amd64,linux/arm64 -f {projectRoot}/Dockerfile -t dotablaze/clipbot:latest -t dotablaze/clipbot:{version} --push .",
+            "forwardAllArgs": false
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "local-build-image": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["^build", "build"],
+      "options": {
+        "commands": [
+          {
+            "command": "docker buildx build -f {projectRoot}/Dockerfile.local -t dotablaze/clipbot:latest --load .",
+            "forwardAllArgs": false
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "download": {
+      "cwd": "{projectRoot}",
+      "command": "go mod download"
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "trackDeps": true,
+        "push": true,
+        "preset": "conventionalcommits",
+        "postTargets": ["build-image", "update-app"]
+      }
+    },
+    "update-app": {
+      "command": "bash tools/update-app.sh charts/clipbot/Chart.yaml {version} {projectName}"
+    },
+    "serve-container": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "docker run --rm -p 8080:8080 -e CLIP_KEY -e TWITCH_CLIENT_ID -e TWITCH_CLIENT_SECRET -e TWITCH_REFRESH_TOKEN -e TWITCH_BROADCASTER_ID dotablaze/clipbot:latest",
+            "forwardAllArgs": false
+          }
+        ],
+        "parallel": false
+      }
+    }
+  }
+}

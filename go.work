@@ -3,6 +3,7 @@ go 1.26.0
 toolchain go1.26.9
 
 use (
+	./apps/go/clipbot
 	./apps/go/meowbot
 	./libs/go/meowbot/feature/api
 	./libs/go/meowbot/feature/db
