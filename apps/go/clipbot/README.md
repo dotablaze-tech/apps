@@ -22,6 +22,12 @@ stream with a `clips:edit` token and replies with the clip link as plain text.
 - `GET /liveness`, `GET /readiness`, and `main healthcheck` for the container.
 - The service waits up to 12s for Twitch to finish processing so the link works when posted.
 
+## Seeding secrets
+
+Run `tools/seed-vault.sh` in your own terminal, not through an agent. It authorizes `clips:edit`, checks the granted
+scope, and writes all five values to `kv/dotablaze-tech-clipbot`. The Twitch app must be confidential, with
+`http://localhost:3000/callback` as a redirect URL.
+
 ## Chat bot setup (StreamElements)
 
 Custom command `!clip`, response: `${customapi.https://<host>/clip?key=<CLIP_KEY>&user=${user}}`.
