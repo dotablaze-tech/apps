@@ -24,8 +24,8 @@ stream with a `clips:edit` token and replies with the clip link as plain text.
 
 ## Seeding secrets
 
-Run `tools/seed-vault.sh` in your own terminal, not through an agent. It authorizes `clips:edit`, checks the granted
-scope, and writes all five values to `kv/dotablaze-tech-clipbot`. The Twitch app must be confidential, with
+Run `tools/seed-vault.sh` in your own terminal, not through an agent, on the machine whose browser approves the app (it
+catches the redirect on `localhost:3000`). It authorizes `clips:edit`, checks the granted scope, and writes all five values to `kv/dotablaze-tech-clipbot`. The Twitch app must be confidential, with
 `http://localhost:3000/callback` as a redirect URL.
 
 ## Chat bot setup (StreamElements)
