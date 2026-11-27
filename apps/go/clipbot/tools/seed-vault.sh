@@ -4,12 +4,13 @@
 # secret and mints a refresh token, and nothing here prints either of them.
 #
 # Usage: TWITCH_CLIENT_ID=<id> TWITCH_BROADCASTER_ID=<id> ./seed-vault.sh
-# Needs: curl, jq, and a logged-in vault CLI (VAULT_ADDR set).
+# Needs: curl, jq, and a logged-in vault CLI (`vault login`).
 set -euo pipefail
 
 : "${TWITCH_CLIENT_ID:?set TWITCH_CLIENT_ID}"
 : "${TWITCH_BROADCASTER_ID:?set TWITCH_BROADCASTER_ID}"
 VAULT_PATH="${VAULT_PATH:-kv/dotablaze-tech-clipbot}"
+export VAULT_ADDR="${VAULT_ADDR:-https://vault.jdwlabs.com}"
 # The redirect never has to load: the code is read from the address bar.
 REDIRECT_URI="http://localhost:3000/callback"
 
