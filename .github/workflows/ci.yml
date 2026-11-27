@@ -86,11 +86,12 @@ jobs:
       # only chore commits and releases nothing.
       - name: Push over SSH
         run: git remote set-url --push origin "git@github.com:${GITHUB_REPOSITORY}.git"
-      # The version target pushes a release commit to main. If main moved
-      # since this run's commit, the push is rejected but its tags still land,
-      # orphaning them. Releasing from the latest main shrinks that window to
-      # the install and build below; the run queued for the newer commit then
-      # finds nothing unreleased and does not bump.
+      # The version target pushes a release commit and its tag to main. If
+      # main moved since this run's commit, the push is rejected; nx.json sets
+      # enforceAtomicPush so the tag is rejected with it instead of landing on
+      # a commit main never gets. Releasing from the latest main shrinks that
+      # window to the install and build below; the run queued for the newer
+      # commit then finds nothing unreleased and does not bump.
       - name: Fast-forward to latest main
         run: git pull --ff-only origin main
       - name: Install Dependencies
